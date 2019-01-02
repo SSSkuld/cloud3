@@ -1,0 +1,12 @@
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\bin\Debug\cloud3.exe.config
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\bin\Debug\cloud3.exe
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\bin\Debug\cloud3.pdb
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\bin\Debug\Aliyun.OSS.dll
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\bin\Debug\Aliyun.OSS.pdb
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.csprojResolveAssemblyReference.cache
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.Form1.resources
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.Properties.Resources.resources
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.csproj.GenerateResource.Cache
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.csproj.CoreCompileInputs.cache
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.exe
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.pdb
