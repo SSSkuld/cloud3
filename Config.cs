@@ -15,8 +15,9 @@ namespace cloud3
 
         public static string Endpoint = "http://oss-cn-beijing.aliyuncs.com";
 
+        public static string DirToDownload = "E:\\资料\\大三上\\云计算\\download";
+
         /*
-        public static string DirToDownload = "<your local dir to download file>";
 
         public static string FileToUpload = "<your local file to upload>";
 

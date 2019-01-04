@@ -19,27 +19,29 @@ namespace cloud3
             const string bucketName = "testmemory1";
             const string fileToUpLoad = "E:\\code\\course\\os\\1.cpp";
             const string folderName = "test/"; // 新建文件夹末尾应该加/
+            const string fileName = "test/1.cpp";
 
             //Create_bucket.CreateBucket(bucketName);
 
-            //Uplord_file.PutObject(bucketName, fileToUpLoad);
+            //Upload_file.PutObjectFromFile(bucketName, fileName, fileToUpLoad);
 
-            Create_folder.CreateEmptyFolder(bucketName, folderName);
+            //Create_folder.CreateEmptyFolder(bucketName, folderName);
 
-            //if (Does_file_exist.DoesObjectExist(bucketName, "1.cpp") == true) // 存在
+            //Download_file.GetObject(bucketName, fileName);
+
+            //List_bucket.ListBucket(bucketName);
+
+            Does_file_exist.DoesObjectExist(bucketName, fileName);
+
+            //if (Does_file_exist.DoesObjectExist(bucketName, fileName) == true) // 存在
             //{
-            //    Delete_file.DeleteObject(bucketName, "1.cpp");
+            Delete_file.DeleteObject(bucketName, fileName);
             //    //Console.WriteLine("ture");
             //}
             //else // 不存在
             //{
             //    //Console.WriteLine("false");
             //}
-            /*
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-            */
         }
 
     }
