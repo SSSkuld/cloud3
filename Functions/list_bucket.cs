@@ -19,7 +19,7 @@ namespace cloud3
         static AutoResetEvent _event = new AutoResetEvent(false);
 
 
-        public static void ListBucket(string bucketName)
+        public static void ListBucket(string bucketName, List<String> now_list)
         {
             try
             {

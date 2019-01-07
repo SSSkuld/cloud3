@@ -13,13 +13,31 @@ namespace cloud3
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
-//        [STAThread]
+        //        [STAThread]
+        [STAThread]
         static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+
+
+
             const string bucketName = "testmemory1";
-            const string fileToUpLoad = "E:\\code\\course\\os\\1.cpp";
-            const string folderName = "test/"; // 新建文件夹末尾应该加/
-            const string fileName = "test/1.cpp";
+            //const string fileToUpLoad = "E:\\code\\course\\os\\1.cpp";
+            const string folderName = "test/123/"; // 新建文件夹末尾应该加/
+            //const string fileName = "test/1.cpp";
+
+
+            //Get_nowpath_allfiles x = new Get_nowpath_allfiles();
+            //x.getNowPathAllFiles(bucketName, "");
+
+            //foreach (var i in x.list)
+            //{
+            //    Console.WriteLine(i.name);
+            //}
+            
+            
 
             //Create_bucket.CreateBucket(bucketName);
 
@@ -29,13 +47,28 @@ namespace cloud3
 
             //Download_file.GetObject(bucketName, fileName);
 
+
+            //Get_nowpath_allfiles p;
+
+
+
+            //Get_nowpath_allfiles.getNowPathAllFiles(bucketName, "test");
+
+            //foreach (FNode x in Get_nowpath_allfiles.list)
+            //{
+            //    Console.WriteLine(x.name);
+            //    Console.WriteLine(x.is_file);
+            //}
+
+
             //List_bucket.ListBucket(bucketName);
 
-            Does_file_exist.DoesObjectExist(bucketName, fileName);
+            //Does_file_exist.DoesObjectExist(bucketName, fileName);
+
+            //Delete_file.DeleteObject(bucketName, folderName);
 
             //if (Does_file_exist.DoesObjectExist(bucketName, fileName) == true) // 存在
             //{
-            Delete_file.DeleteObject(bucketName, fileName);
             //    //Console.WriteLine("ture");
             //}
             //else // 不存在

@@ -9,3 +9,4 @@ E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.csproj.Gener
 E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.csproj.CoreCompileInputs.cache
 E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.exe
 E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.pdb
+E:\资料\大三上\云计算\cloud3\cloud3\cloud3\obj\Debug\cloud3.Form1.resources

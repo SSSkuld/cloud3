@@ -17,6 +17,10 @@ namespace cloud3
 
         public static string DirToDownload = "E:\\资料\\大三上\\云计算\\download";
 
+        public static string private_bucket_name = "testmemory1";
+
+        public static string public_bucket_name = "publicmemory";
+
         /*
 
         public static string FileToUpload = "<your local file to upload>";
