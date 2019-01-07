@@ -18,7 +18,7 @@ namespace cloud3
         public static void DeleteObject(string bucketName, string fileName)
         {
             try
-            {     
+            {
                 client.DeleteObject(bucketName, fileName);
 
                 Console.WriteLine("Delete object succeeded");
