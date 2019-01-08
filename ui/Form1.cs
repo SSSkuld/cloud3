@@ -30,23 +30,10 @@ namespace cloud3
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //上传
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Multiselect = true;//该值确定是否可以选择多个文件
-            dialog.Title = "请选择文件夹";
-            dialog.Filter = "所有文件(*.*)|*.*";
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string file = dialog.FileName;
 
-                Upload_file.PutObjectFromFile(now_bucket, file);
-            }
-            show();
-        }
         private void show()
         {
+            choose.Clear();
             //显示路径
             pathLabel.AutoSize = true;
             pathLabel.Size = new System.Drawing.Size(716, 31);
@@ -118,12 +105,15 @@ namespace cloud3
                     fileLable.Location = new System.Drawing.Point(200 + i * 100, 330);
                 else
                     fileLable.Location = new System.Drawing.Point(200 + (i - 6) * 100, 330+100);
-                for (int j = s.name.Length - 1; j >= 0; j--)
+                string new_name = "";
+                for (int j = s.name.Length - 2; j >= 0; j--)
                     if (s.name[j] == '/')
                     {
-                        fileLable.Text = s.name.Substring(j+1);
+                        new_name = s.name.Substring(j+1);
                         break;
                     }
+                if (new_name == "") new_name = s.name;
+                fileLable.Text = new_name;
                 this.Controls.Add(fileLable);
                 i++;
             }
@@ -139,11 +129,13 @@ namespace cloud3
         private List<string> choose = new List<string>();
         private bool isClicked;
         private DateTime clickTime;
+        private string clickedName;
+
 
         private void filePicBox_clicked(object sender, EventArgs e)
         {
             PictureBox filePicBox=sender as PictureBox;
-            if (choose.Contains( filePicBox.Name))
+            if (choose.Contains(filePicBox.Name))
             {
                 choose.Remove(filePicBox.Name);
                 filePicBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -156,7 +148,7 @@ namespace cloud3
             if (isClicked)
             {
                 TimeSpan span = DateTime.Now - clickTime;
-                if (span.Milliseconds < SystemInformation.DoubleClickTime)
+                if (span.Milliseconds < SystemInformation.DoubleClickTime && filePicBox.Name == clickedName)
                 {
                     filePicBox_doubleClicked(sender, e);
                     isClicked = false;
@@ -165,13 +157,16 @@ namespace cloud3
                 {
                     isClicked = true;
                     clickTime = DateTime.Now;
+                    clickedName = filePicBox.Name;
                 }
             }
             else
             {
                 isClicked = true;
                 clickTime = DateTime.Now;
+                clickedName = filePicBox.Name;
             }
+
 
         }
         private void filePicBox_doubleClicked(object sender, EventArgs e)
@@ -184,16 +179,62 @@ namespace cloud3
 
             show();
         }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //上传
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Multiselect = true;//该值确定是否可以选择多个文件
+            dialog.Title = "请选择文件夹";
+            dialog.Filter = "所有文件(*.*)|*.*";
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string file = dialog.FileName;
+
+                Upload_file.PutObjectFromFile(now_bucket, file);
+            }
+            show();
+        }
         private void downloadButton_Click(object sender, EventArgs e)
         {
             //下载
+
+            foreach (string s in choose)
+            {
+                Console.WriteLine(s);
+            }
+
+            FolderBrowserDialog folder_dialog = new FolderBrowserDialog();
+            folder_dialog.ShowDialog();
+            if (folder_dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string folder_path = folder_dialog.SelectedPath;
+
+                Console.WriteLine(folder_path);
+                
+                foreach (string s in choose)
+                {
+                    Download_file.GetObject(now_bucket, s, folder_path);
+                }
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             //删除 
             int delete = choose.Count;
-            for(int i = 0; i < delete; i++)
+
+            for (int i = 0; i < delete; i ++)
+            {
+                if (now_bucket == Config.recycled_bucket_name)
+                    Delete_file.DeleteObject(now_bucket, choose[i]);
+                else
+                {
+                    Copy_bucket_to_bucket.CopyObject(now_bucket, choose[i], Config.recycled_bucket_name, choose[i]);
+                    Delete_file.DeleteObject(now_bucket, choose[i]);
+                }
+            }
+
+            for (int i = 0; i < delete; i++)
             {
                 fileName.Remove(choose[0]);
                 choose.Remove(choose[0]);
@@ -217,6 +258,18 @@ namespace cloud3
             //移动至公共子空间
         {
             int delete = choose.Count;
+
+            for (int i = 0; i < delete; i++)
+            {
+                if (now_bucket == Config.public_bucket_name)
+                    continue;
+                else
+                {
+                    Copy_bucket_to_bucket.CopyObject(now_bucket, choose[i], Config.public_bucket_name, choose[i]);
+                    Delete_file.DeleteObject(now_bucket, choose[i]);
+                }
+            }
+
             for (int i = 0; i < delete; i++)
             {
                 fileName.Remove(choose[0]);
@@ -242,7 +295,9 @@ namespace cloud3
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            now_bucket = Config.recycled_bucket_name;
+            path = "";
+            show();
         }
 
         private void pathLabel_Click(object sender, EventArgs e)
@@ -253,6 +308,26 @@ namespace cloud3
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            int len = path.Length;
+            if (len == 0) return;
+            //Console.WriteLine("old path : " + path);
+            int if_find = 0;
+            for (int i = len-2; i >= 0; i --)
+            {
+                if (path[i] == '/')
+                {
+                    if_find = 1;
+                    path = path.Remove(i + 1);
+                    break;
+                }
+            }
+            if (if_find == 0) path = "";
+            //Console.WriteLine("new path : " + path);
+            show();
         }
     }
 }

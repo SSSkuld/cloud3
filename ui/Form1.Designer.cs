@@ -138,18 +138,17 @@
             this.label1.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(261, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(808, 87);
+            this.label1.Size = new System.Drawing.Size(811, 87);
             this.label1.TabIndex = 8;
             this.label1.Text = "欢迎来到cloud3神奇的云盘!!";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pathLabel
             // 
-            this.pathLabel.AutoSize = true;
             this.pathLabel.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.pathLabel.Location = new System.Drawing.Point(327, 271);
+            this.pathLabel.Location = new System.Drawing.Point(399, 236);
             this.pathLabel.Name = "pathLabel";
-            this.pathLabel.Size = new System.Drawing.Size(716, 31);
+            this.pathLabel.Size = new System.Drawing.Size(509, 31);
             this.pathLabel.TabIndex = 11;
             this.pathLabel.Text = "当前路径:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
             this.pathLabel.Click += new System.EventHandler(this.pathLabel_Click);
@@ -173,6 +172,7 @@
             this.button4.TabIndex = 12;
             this.button4.Text = "返回上一级";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // button5
             // 
@@ -188,9 +188,9 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("微软雅黑", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(258, 222);
+            this.label2.Location = new System.Drawing.Point(257, 236);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 31);
+            this.label2.Size = new System.Drawing.Size(150, 40);
             this.label2.TabIndex = 14;
             this.label2.Text = "当前路径：";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -199,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1098, 761);
+            this.ClientSize = new System.Drawing.Size(1165, 761);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -218,7 +218,6 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
