@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions\copy_bucket_to_bucket.cs" />
     <Compile Include="Functions\get_nowpath_allfiles.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Config.cs" />

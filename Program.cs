@@ -26,7 +26,7 @@ namespace cloud3
             const string bucketName = "testmemory1";
             //const string fileToUpLoad = "E:\\code\\course\\os\\1.cpp";
             const string folderName = "test/123/"; // 新建文件夹末尾应该加/
-            //const string fileName = "test/1.cpp";
+                                                   //const string fileName = "test/1.cpp";
 
 
             //Get_nowpath_allfiles x = new Get_nowpath_allfiles();
@@ -36,8 +36,8 @@ namespace cloud3
             //{
             //    Console.WriteLine(i.name);
             //}
-            
-            
+
+
 
             //Create_bucket.CreateBucket(bucketName);
 
@@ -45,7 +45,7 @@ namespace cloud3
 
             //Create_folder.CreateEmptyFolder(bucketName, folderName);
 
-            //Download_file.GetObject(bucketName, fileName);
+            //Download_file.GetObject(bucketName, "roottt/模板.docx");
 
 
             //Get_nowpath_allfiles p;

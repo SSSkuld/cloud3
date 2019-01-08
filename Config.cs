@@ -21,10 +21,11 @@ namespace cloud3
 
         public static string public_bucket_name = "publicmemory";
 
+        public static string recycled_bucket_name = "recycledmemory";
+
         /*
 
         public static string FileToUpload = "<your local file to upload>";
-
         public static string BigFileToUpload = "<your local big file to upload>";
         public static string ImageFileToUpload = "<your local image file to upload>";
         public static string CallbackServer = "<your callback server uri>";
