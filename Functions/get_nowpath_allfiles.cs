@@ -42,7 +42,6 @@ namespace cloud3
                     result = client.ListObjects(listObjectsRequest);
                     foreach (var summary in result.ObjectSummaries)
                     {
-                        Console.WriteLine(summary.Key);
                         keys.Add(summary.Key);
 
                         FNode newnode = new FNode(summary.Key, summary.Key.Contains(".")); // 1 = file  0 = folder
@@ -50,7 +49,6 @@ namespace cloud3
                     }
                     nextMarker = result.NextMarker;
                 } while (result.IsTruncated);
-                Console.WriteLine("List objects of bucket:{0} succeeded ", bucketName);
             }
             catch (OssException ex)
             {
