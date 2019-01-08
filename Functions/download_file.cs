@@ -17,20 +17,31 @@ namespace cloud3
         static string accessKeySecret = Config.AccessKeySecret;
         static string endpoint = Config.Endpoint;
         static OssClient client = new OssClient(endpoint, accessKeyId, accessKeySecret);
-        static string dirToDownload = Config.DirToDownload;
 
         static AutoResetEvent _event = new AutoResetEvent(false);
 
 
-        public static void GetObject(string bucketName, string fileName)
+        public static void GetObject(string bucketName, string fileName, string path)
         {
             try
             {
                 var result = client.GetObject(bucketName, fileName);
 
+                string file_name = "";
+                for (int i = fileName.Length - 1; i >= 0; i --)
+                {
+                    if (fileName[i] == '/')
+                    {
+                        file_name = fileName.Substring(i + 1);
+                        break;
+                    }
+                }
+                if (file_name == "") file_name = fileName;
+
+
                 using (var requestStream = result.Content)
                 {
-                    using (var fs = File.Open(dirToDownload + "\\" + fileName, FileMode.OpenOrCreate))
+                    using (var fs = File.Open(path + "\\" + file_name, FileMode.OpenOrCreate))
                     {
                         int length = 4 * 1024;
                         var buf = new byte[length];
