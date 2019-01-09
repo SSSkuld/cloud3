@@ -28,7 +28,6 @@ namespace cloud3
             const string folderName = "test/123/"; // 新建文件夹末尾应该加/
                                                    //const string fileName = "test/1.cpp";
 
-
             //Get_nowpath_allfiles x = new Get_nowpath_allfiles();
             //x.getNowPathAllFiles(bucketName, "");
 
@@ -37,8 +36,12 @@ namespace cloud3
             //    Console.WriteLine(i.name);
             //}
 
-
-
+            //DateTime nt1 = DateTime.Now;
+            ////mult_piece_upload.UploadMultipart(bucketName, "E:\\VS2010.rar");
+            //DateTime nt2 = DateTime.Now;
+            //Console.Write(nt2.Minute - nt1.Minute);
+            //Console.Write(" : ");
+            //Console.WriteLine(nt2.Second - nt1.Second);
             //Create_bucket.CreateBucket(bucketName);
 
             //Upload_file.PutObjectFromFile(bucketName, fileName, fileToUpLoad);

@@ -201,8 +201,13 @@ namespace cloud3
                 }
 
                 Console.WriteLine(key);
-
-                Upload_file.PutObjectFromFile(now_bucket, file, key);
+                System.IO.FileInfo fileInfo = null;
+                fileInfo = new System.IO.FileInfo(file);
+                if (System.Math.Ceiling(fileInfo.Length / 1024.0) >= 1024 * 1024)
+                {
+                    mult_piece_upload.UploadMultipart(now_bucket, file, key);
+                }
+                else Upload_file.PutObjectFromFile(now_bucket, file, key);
             }
             show();
         }

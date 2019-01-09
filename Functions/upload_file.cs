@@ -31,8 +31,14 @@ namespace cloud3
             // debug
             try
             {
+                DateTime nt1 = DateTime.Now;
                 client.PutObject(bucketName, key, fileToUpload);
+                DateTime nt2 = DateTime.Now;
+                Console.Write(nt2.Minute - nt1.Minute);
+                Console.Write(" : ");
+                Console.Write(nt2.Second - nt1.Second);
                 Console.WriteLine("Put object:{0} succeeded", key);
+               
             }
             catch (OssException ex)
             {

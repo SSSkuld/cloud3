@@ -16,10 +16,9 @@ namespace cloud3
         static string endpoint = Config.Endpoint;
         static OssClient client = new OssClient(endpoint, accessKeyId, accessKeySecret);
 
-        static string key = "key-1";
         //static string fileToUpload = Config.BigFileToUpload;
 
-        static int partSize = 1024 * 1024 * 1024;
+        static int partSize = 4 * 1024 * 1024;
 
         public class UploadPartContext
         {
@@ -78,7 +77,7 @@ namespace cloud3
         /// <summary>
         /// 分片上传。
         /// </summary>
-        public static void UploadMultipart(String bucketName, String fileToUpload)
+        public static void UploadMultipart(String bucketName, String fileToUpload, string key)
         {
             var uploadId = InitiateMultipartUpload(bucketName, key);
             var partETags = UploadParts(bucketName, key, fileToUpload, uploadId, partSize);
