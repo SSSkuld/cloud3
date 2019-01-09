@@ -26,22 +26,11 @@ namespace cloud3
         /// </summary>
 
         // 上传文件，自带.后缀名，无法上传文件夹
-        public static void PutObjectFromFile(string bucketName, string fileToUpload)
+        public static void PutObjectFromFile(string bucketName, string fileToUpload, string key)
         {
             // debug
             try
             {
-                string key = "";
-
-                for (int i = fileToUpload.Length-1; i >= 0; i --)
-                {
-                    if (fileToUpload[i] == '\\')
-                    {
-                        key = fileToUpload.Substring(i+1);
-                        break;
-                    }
-                }
-
                 client.PutObject(bucketName, key, fileToUpload);
                 Console.WriteLine("Put object:{0} succeeded", key);
             }

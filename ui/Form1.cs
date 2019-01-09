@@ -190,7 +190,19 @@ namespace cloud3
             {
                 string file = dialog.FileName;
 
-                Upload_file.PutObjectFromFile(now_bucket, file);
+                string key = "";
+                for (int i = file.Length-1; i >= 0; i --)
+                {
+                    if (file[i] == '\\')
+                    {
+                        key = path + file.Substring(i + 1);
+                        break;
+                    }
+                }
+
+                Console.WriteLine(key);
+
+                Upload_file.PutObjectFromFile(now_bucket, file, key);
             }
             show();
         }
