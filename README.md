@@ -1,5 +1,7 @@
 # cloud3
 
+使用阿里OSS实现的个人网盘
+
 注意 : 使用前要先下载安装aliyun.oss c# nuget包！
 
 12.25 ： 完成bucket的创建以及删除
