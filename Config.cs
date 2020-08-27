@@ -9,9 +9,9 @@ namespace cloud3
 {
     internal class Config
     {
-        public static string AccessKeyId = "LTAI2EBx4neKsJHr";
+        public static string AccessKeyId = "";
 
-        public static string AccessKeySecret = "FWPS0aZKK2wRG0TNUg5BXAX3YNrnC6";
+        public static string AccessKeySecret = "";
 
         public static string Endpoint = "http://oss-cn-beijing.aliyuncs.com";
 
